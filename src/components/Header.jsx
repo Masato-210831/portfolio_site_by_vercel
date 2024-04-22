@@ -1,16 +1,20 @@
-import { Box, Typography, AppBar, Toolbar, Button } from "@mui/material";
+import { Box, Typography, AppBar, Toolbar, Button, useMediaQuery, styled } from "@mui/material";
 import { Link as Scroll, animateScroll } from "react-scroll";
 import { useNavItems } from "../context/NavContext";
+import DrawerBtn from "./DrawerBtn";
+
 
 
 
 const Header = () => {
+  const hunbergerBtnShow = useMediaQuery('(max-width:767px)')
+
+
   
   // ナビゲーションの項目
   const navItems = useNavItems()
 
   return (
-
 
     <AppBar
       id="homeSection"
@@ -51,17 +55,23 @@ const Header = () => {
           </Typography>
         </Box>
 
-        <Box height={'100%'}>
-          {/* fixedのHeaderにIdとScroll要素を使用したスムースはうまく行かなかったので、Headerだけ別処理、Scrollに合わせるため<a>で囲む */}
-          <a>
-            <Button key={navItems[0] + 0} sx={{color:'black', height:'100%',px:2}} onClick={() => animateScroll.scrollToTop()}> {navItems[0]} </Button>
-          </a>
-          {navItems.slice(1).map(navItem => (
-            <Scroll key={navItem} to={navItem.toLowerCase() + 'Section'}  smooth={true} offset={-30}>
-              <Button sx={{color:'black', height:'100%',px:2}}> {navItem} </Button>
-            </Scroll>
-          ))}
-        </Box>
+        {!hunbergerBtnShow &&
+          <Box height={'100%'}>
+            {/* fixedのHeaderにIdとScroll要素を使用したスムースはうまく行かなかったので、Headerだけ別処理、Scrollに合わせるため<a>で囲む */}
+            <a>
+              <Button key={navItems[0] + 0} sx={{color:'black', height:'100%',px:2}} onClick={() => animateScroll.scrollToTop()}> {navItems[0]} </Button>
+            </a>
+            {navItems.slice(1).map(navItem => (
+              <Scroll key={navItem} to={navItem.toLowerCase() + 'Section'}  smooth={true} offset={-30}>
+                <Button sx={{color:'black', height:'100%',px:2}}> {navItem} </Button>
+              </Scroll>
+            ))}
+          </Box>
+        }
+
+
+        {/* ハンバーガーボタン関係 */}
+        <DrawerBtn hunbergerBtnShow={hunbergerBtnShow}/>
       </Toolbar>
     </AppBar>
   );
