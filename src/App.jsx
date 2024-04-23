@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "./App.css";
@@ -27,8 +26,8 @@ const theme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
-      sm: 600,
-      md: 850,
+      sm: 430,
+      md: 750,
       lg: 1200,
       xl: 1536,
     },

@@ -48,7 +48,7 @@ const DrawerBtn = ({hunbergerBtnShow}) => {
           )}
           <Box
             sx={{
-              width: 250,
+              width: {sm:250, xs:200},
               position: "fixed",
               top: 0,
               bottom: 0,

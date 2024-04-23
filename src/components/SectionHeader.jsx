@@ -19,23 +19,22 @@ const SectionHeader = ({ FirstWords, SecondWords }) => {
           <>
             <Typography
               variant="h2"
-              fontSize={36}
               fontWeight={600}
-              sx={{ mr: "18px" }}
+              sx={{ mr: "18px", fontSize:{md:'36px', xs:'32px'} }}
             >
               <Typography variant="span" sx={{ color: "#FEAF00" }}>
                 {FirstWords[0]}
               </Typography>
               {FirstWords.slice(1)}
             </Typography>
-            <Typography>{SecondWords}</Typography>
+            <Typography sx={{fontSize:{xs:'14px'}}}>{SecondWords}</Typography>
           </>
         ) : (
           <>
             <Typography
               variant="h2"
-              fontSize={36}
               fontWeight={600}
+              sx={{fontSize:{md:'36px', xs:'32px'}}}
             >
               <Typography variant="span" sx={{ color: "#FEAF00" }}>
                 {FirstWords[0]}
