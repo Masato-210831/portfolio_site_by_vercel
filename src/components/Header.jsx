@@ -122,7 +122,7 @@ const Header = ({ from }) => {
             justifyContent: "center",
             alignItems: "center",
             width: { md: 180, xs: 140 },
-            height: "100%",
+            height: {md:"72px", xs:'64px'},
             border: 1,
             textAlign: "center",
           }}
