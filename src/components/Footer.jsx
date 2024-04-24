@@ -63,6 +63,41 @@ const Footer = ({ from }) => {
     );
   };
 
+  const HomeNameLink = () => {
+    return (
+      <>
+        <Box
+          onClick={() => animateScroll.scrollToTop()}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: { md: 180, xs: 140 },
+            height: '100%',
+            border: "1px solid #fff",
+            textAlign: "center",
+            mb:{md:0, xs:1},
+            '&:hover':{cursor:'pointer'}
+          }}
+        >
+          <Typography
+            variant="span"
+            component="span"
+            sx={{
+              fontFamily: "bellota",
+              fontSize: { md: 56, xs: 40 },
+              fontStyle: "italic",
+              color:'#fff'
+            }}
+          >
+            Masa
+          </Typography>
+        </Box>
+      </>
+    )
+  }
+
+
   // home以外のページのNavリンクコンポーネント(HomeへのLink)
   const OtherFootNav = () => {
     return (
@@ -92,37 +127,60 @@ const Footer = ({ from }) => {
     );
   };
 
+  const OtherNameLink = () => {
+    return(
+      <>
+        <Link
+          key={navItems[0]}
+          to={{
+            pathname: "/",
+            hash: "#" + navItems[0].toLowerCase() + "Section",
+          }}
+          style={{ textDecoration: 'none', color: 'inherit' }}
+          >
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: { md: 180, xs: 140 },
+              height: "100%",
+              border: "1px solid #fff",
+              textAlign: "center",
+              mb:{md:0, xs:1},
+            }}
+          >
+            <Typography
+              variant="span"
+              component="span"
+              sx={{
+                fontFamily: "bellota",
+                fontSize: { md: 56, xs: 40 },
+                fontStyle: "italic",
+                color:'#fff'
+              }}
+            >
+              Masa
+            </Typography>
+          </Box>
+        </Link>
+      </>
+    )
+  }
+
+
+
+
 
 
 
   return (
     <Box component="footer" sx={{ bgcolor: "#868686" }}>
       <FooterWrapper>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            width: {md:180, xs:140},
-            height: "100%",
-            border: "1px solid #fff;",
-            textAlign: "center",
-            mb:{md:0, xs:1}
-          }}
-        >
-          <Typography
-            variant="span"
-            component="span"
-            sx={{
-              fontFamily: "bellota",
-              fontSize: {md:56, xs:40},
-              fontStyle: "italic",
-              color: "#fff",
-            }}
-          >
-            Masa
-          </Typography>
-        </Box>
+        
+        {from === 'home' ? <HomeNameLink/> : <OtherNameLink/>}
+
+        
         <Box variant="nav" display={"flex"} justifyContent={"flex-end"}>
 
           {from === 'home' ? <HomeFootNav/> : <OtherFootNav/> }

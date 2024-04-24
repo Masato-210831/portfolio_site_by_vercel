@@ -63,6 +63,38 @@ const Header = ({ from }) => {
     );
   };
 
+  const HomeNameLink = () => {
+    return (
+      <>
+        <Box
+          onClick={() => animateScroll.scrollToTop()}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: { md: 180, xs: 140 },
+            height: {md:"72px", xs:'64px'},
+            border: 1,
+            textAlign: "center",
+            '&:hover':{cursor:'pointer'}
+          }}
+        >
+          <Typography
+            variant="span"
+            component="span"
+            sx={{
+              fontFamily: "bellota",
+              fontSize: { md: 56, xs: 40 },
+              fontStyle: "italic",
+            }}
+          >
+            Masa
+          </Typography>
+        </Box>
+      </>
+    )
+  }
+
   // home以外のページのNavリンクコンポーネント(HomeへのLink)
   const OtherLinkNav = () => {
     return (
@@ -91,6 +123,45 @@ const Header = ({ from }) => {
     );
   };
 
+  const OtherNameLink = () => {
+    return(
+      <>
+        <Link
+          key={navItems[0]}
+          to={{
+            pathname: "/",
+            hash: "#" + navItems[0].toLowerCase() + "Section",
+          }}
+          style={{ textDecoration: 'none', color: 'inherit' }}
+          >
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: { md: 180, xs: 140 },
+              height: {md:"72px", xs:'64px'},
+              border: 1,
+              textAlign: "center",
+            }}
+          >
+            <Typography
+              variant="span"
+              component="span"
+              sx={{
+                fontFamily: "bellota",
+                fontSize: { md: 56, xs: 40 },
+                fontStyle: "italic",
+              }}
+            >
+              Masa
+            </Typography>
+          </Box>
+        </Link>
+      </>
+    )
+  }
+
   
   return (
     <AppBar
@@ -116,29 +187,8 @@ const Header = ({ from }) => {
           margin: "0 auto",
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            width: { md: 180, xs: 140 },
-            height: {md:"72px", xs:'64px'},
-            border: 1,
-            textAlign: "center",
-          }}
-        >
-          <Typography
-            variant="span"
-            component="span"
-            sx={{
-              fontFamily: "bellota",
-              fontSize: { md: 56, xs: 40 },
-              fontStyle: "italic",
-            }}
-          >
-            Masa
-          </Typography>
-        </Box>
+        
+        {from === 'home' ? <HomeNameLink/> : <OtherNameLink/>}
 
         {/* タブレット以下のレスポンシブ対応 */}
         {!hunbergerBtnShow && (
