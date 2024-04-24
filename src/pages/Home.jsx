@@ -29,12 +29,12 @@ const Home = () => {
 
   return (
     <>
-      <Header/>
+      <Header from={'home'}/>
       <MainVisual />
       <About />
       <Works />
       <Products />
-      <Footer/>
+      <Footer from={'home'}/>
     </>
   );
 };

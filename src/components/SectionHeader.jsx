@@ -34,14 +34,13 @@ const SectionHeader = ({ FirstWords, SecondWords }) => {
             <Typography
               variant="h2"
               fontWeight={600}
-              sx={{fontSize:{md:'36px', xs:'32px'}}}
+              sx={{fontSize:{md:'36px', xs:'26px'}}}
             >
               <Typography variant="span" sx={{ color: "#FEAF00" }}>
                 {FirstWords[0]}
               </Typography>
               {FirstWords.slice(1)}
             </Typography>
-            <Typography>{SecondWords}</Typography>
           </>
         )}
       </SectionHeading>

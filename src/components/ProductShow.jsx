@@ -3,11 +3,14 @@ import { styled, Box, Typography, Link, List, ListItem } from "@mui/material";
 import SectionHeader from "./SectionHeader";
 import { useAppBase } from "../context/NavContext";
 
-const WorksWrapper = styled("section")({
+const WorksWrapper = styled("section")(({theme}) => ({
   maxWidth: "1080px",
   padding: "48px 40px",
   margin: "0 auto",
-});
+  [theme.breakpoints.down("md")]: {
+    padding: "48px 16px",
+  },
+}));
 
 const ProductShow = ({data, details}) => {
   
@@ -16,9 +19,9 @@ const ProductShow = ({data, details}) => {
   return (
     <WorksWrapper>
       <SectionHeader FirstWords={data.name} />
-      <Box display={"flex"}>
+      <Box display={"flex"} sx={{flexDirection:{sm:'row', xs:'column'}}}>
 
-        <Box sx={{ mr: 10, maxWidth: "496px"}}>
+        <Box sx={{ mr: 10, mb:{sm:0, xs:3} , maxWidth: "496px"}}>
           <img
             src={APP_BASE + data.imgPath}
             alt="product"

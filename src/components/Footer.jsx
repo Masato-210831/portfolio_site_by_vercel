@@ -1,10 +1,11 @@
 import React from "react";
 import { Box, styled, Typography, Button, Divider } from "@mui/material";
+import { Link } from "react-router-dom";
 import { Link as Scroll, animateScroll } from "react-scroll";
 import { useNavItems } from "../context/NavContext";
 import { useAppBase } from "../context/NavContext";
 
-const WorksWrapper = styled("section")(({ theme }) => ({
+const FooterWrapper = styled("section")(({ theme }) => ({
   maxWidth: "1080px",
   padding: "48px 40px",
   margin: "0 auto",
@@ -14,15 +15,89 @@ const WorksWrapper = styled("section")(({ theme }) => ({
 }));
 
 
-const Footer = () => {
+const Footer = ({ from }) => {
   const APP_BASE = useAppBase()
 
    // ナビゲーションの項目
   const navItems = useNavItems()
 
+  // home用drawerのナビコンポーネント(Scroll)
+  const HomeFootNav = () => {
+    return (
+      <>
+        {/* fixedのHeaderにIdとScroll要素を使用したスムースはうまく行かなかったので、Headerだけ別処理、Scrollに合わせるため<a>で囲む */}
+        <a>
+          <Button
+            key={navItems[0] + 0}
+            sx={{
+              color: "#fff",
+              height: "100%",
+              p: {sm:2, xs:1},
+              fontSize: {sm:'16px', xs:'14px'},
+            }}
+            onClick={() => animateScroll.scrollToTop()}
+          >
+            {navItems[0]}
+          </Button>
+        </a>
+        {navItems.slice(1).map((navItem) => (
+          <Scroll
+            key={navItem}
+            to={navItem.toLowerCase() + "Section"}
+            smooth={true}
+            offset={-30}
+          >
+            <Button
+              sx={{
+                color: "#fff",
+                height: "100%",
+                px: {sm:2, xs:1},
+                fontSize: {sm:'16px', xs:'14px'},
+              }}
+            >
+              {navItem}
+            </Button>
+          </Scroll>
+        ))}
+      </>
+    );
+  };
+
+  // home以外のページのNavリンクコンポーネント(HomeへのLink)
+  const OtherFootNav = () => {
+    return (
+      <>
+        {navItems.map((navItem) => (
+          <Link
+            key={navItem}
+            to={{
+              pathname: "/",
+              hash: "#" + navItem.toLowerCase() + "Section",
+            }}
+            offset={-30}
+          >
+            <Button
+              sx={{
+                color: "#fff",
+                height: "100%",
+                p: {sm:2, xs:1},
+                fontSize:{sm:'16px', xs:'14px'},
+              }}
+            >
+              {navItem}
+            </Button>
+          </Link>
+        ))}
+      </>
+    );
+  };
+
+
+
+
   return (
     <Box component="footer" sx={{ bgcolor: "#868686" }}>
-      <WorksWrapper>
+      <FooterWrapper>
         <Box
           sx={{
             display: "flex",
@@ -49,20 +124,13 @@ const Footer = () => {
           </Typography>
         </Box>
         <Box variant="nav" display={"flex"} justifyContent={"flex-end"}>
-          {/* fixedのHeaderにIdとScroll要素を使用したスムースはうまく行かなかったので、Headerだけ別処理、Scrollに合わせるため<a>で囲む */}
-          <a>
-            <Button key={navItems[0] + 0} sx={{color:"#fff", height:'100%', px:{md:2, xs:1}, fontSize:{md:'16px', sm:'14px', xs:'12px'}}} onClick={() => animateScroll.scrollToTop()}> {navItems[0]} </Button>
-          </a>
-          {navItems.slice(1).map(navItem => (
-            <Scroll key={navItem} to={navItem.toLowerCase() + 'Section'}  smooth={true} offset={-30}>
-              <Button key={navItem} sx={{ color: "#fff", height: "100%", p: {md:2, xs:1}, fontSize:{md:'16px', xs:'14px', xs:'12px'}}}>
-                {navItem}
-              </Button>
-            </Scroll>
-          ))}
+
+          {from === 'home' ? <HomeFootNav/> : <OtherFootNav/> }
+
         </Box>
         
         <Divider sx={{ borderColor: "#fff" }} />
+
         <Box display={'flex'} justifyContent={"space-between"} width={1} sx={{ mt: {md:3, xs:2} }}>
           <Box>
             <a href="https://github.com/Masato-210831">
@@ -73,7 +141,7 @@ const Footer = () => {
             <Typography sx={{color:'#fff', fontSize:{md:16, sm:14, xs:12}}}>©︎ 2024 Masa Portfolio site</Typography>
           </Box>
         </Box>
-      </WorksWrapper>
+      </FooterWrapper>
     </Box>
   );
 };

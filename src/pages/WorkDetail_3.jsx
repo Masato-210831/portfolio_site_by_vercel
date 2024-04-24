@@ -1,9 +1,9 @@
 import React ,{useEffect} from 'react'
 import { List, ListItem, Link } from '@mui/material'
-import OtherHeader from '../components/OtherHeader'
 import OtherMainVisual from '../components/OtherMainVisual'
 import ProductShow from '../components/ProductShow'
-import OtherFooter from '../components/OtherFooter'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 
 const data = {name:"DESIGN FOR SMILE", imgPath:"imgs/portfolio_3.jpg"}
@@ -46,10 +46,10 @@ const WorkDetail_3 = () => {
 
   return (
     <div>
-      <OtherHeader/>
+      <Header/>
       <OtherMainVisual/>
       <ProductShow data={data} details={details}/>
-      <OtherFooter/>
+      <Footer/>
     </div>
   )
 }

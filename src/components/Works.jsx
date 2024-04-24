@@ -20,12 +20,12 @@ const WorksWrapper = styled("section")(({ theme }) => ({
 const worksList = [
   {
     date: "2021/11/09",
-    works: "Pythonを学びながら、Web制作のコミニティに参加",
+    works: "プログラミングスクールでWeb制作の学習を開始",
   },
   { date: "2022/10/13", works: "本業の転職活動のため、IT関係から離れる" },
-  { date: "2024/11/01", works: "本格的に機械学習を開始" },
+  { date: "2024/11/01", works: "本格的にAI関係の学習を開始" },
   { date: "2024/01/08", works: "Signateのコンペティションで上位30%に入る" },
-  { date: "2024/04/10", works: "初めての自作アプリ(未押印検出アプリ)を作成" },
+  { date: "2024/04/10", works: "初めての自作アプリ(未押印検出アプリ)が完成!!" },
 ];
 
 const Works = () => {

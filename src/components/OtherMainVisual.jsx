@@ -3,15 +3,21 @@ import {styled} from '@mui/system'
 import React from 'react'
 
 
-const SiteName = styled('h1')({
+const SiteName = styled('h1')(({theme}) => ({
   width: '100%', 
   textAlign: 'center',
   fontFamily: "Myriad Pro",
   fontWeight: 'normal', 
   letterSpacing: '12px',
   fontSize:'64px',
-  margin:0
-})
+  margin:0,
+  [theme.breakpoints.down('md')]: {
+   fontSize:'36px'
+  },
+}))
+
+
+
 
 const OtherMainVisual = () => {
   return (
