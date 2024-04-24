@@ -63,12 +63,12 @@ const WorkDetail_4 = () => {
   },[])
 
   return (
-    <div>
+    <>
       <Header/>
       <OtherMainVisual/>
       <ProductShow data={data} details={details}/>
       <Footer/>
-    </div>
+    </>
   )
 }
 

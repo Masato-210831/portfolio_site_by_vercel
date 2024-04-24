@@ -44,12 +44,12 @@ const WorkDetail_2 = () => {
   },[])
 
   return (
-    <div>
+    <>
       <Header/>
       <OtherMainVisual/>
       <ProductShow data={data} details={details}/>
       <Footer/>
-    </div>
+    </>
   )
 }
 
