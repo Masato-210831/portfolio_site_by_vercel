@@ -78,7 +78,8 @@ const details = [
   {
     title:"アプリ用サンプル置き場",
     description:(
-      <Link href="https://drive.google.com/drive/folders/14SU1kJ6NFKjfBMrKyq6F1ZGJgTra1MPT" >
+      // <Link href="https://drive.google.com/drive/folders/14SU1kJ6NFKjfBMrKyq6F1ZGJgTra1MPT" >
+      <Link href="https://drive.google.com/drive/folders/14SU1kJ6NFKjfBMrKyq6F1ZGJgTra1MPT?usp=sharing" >
       サンプル置き場 (ファイル共有用Googleドライブ)
       </Link>
     )
