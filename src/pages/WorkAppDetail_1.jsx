@@ -71,7 +71,7 @@ const details = [
       <Link
         href="https://masa-devs.net/"
       >
-         https://masato-210831.github.io/corporate_site_220217/
+         https://masa-devs.net/
       </Link>
     ),
   },
